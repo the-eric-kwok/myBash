@@ -13,11 +13,11 @@ burn(){
     -i "$VIDEO" \
     -i "$LOGO" \
     -filter_complex \
-    "[1:v]scale=$SIZE:$SIZE[logo];\
-    [0:v][logo]overlay=$POS[taged];\
+    "[1]scale=$SIZE:$SIZE[logo];\
+    [0][logo]overlay=$POS[taged];\
     [taged]ass=$ASS[sub]" \
     -map [sub] \
-    -map 0,0 \
+    -map 0:a \
     "$OUTPUT"
 }
 
